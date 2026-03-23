@@ -6,9 +6,9 @@ maintained_by: {MA_NAME}
 
 # MAWA Dispatch Table
 
-## 说明
-Dispatcher 的路由索引。优先级从高到低排列。
-修改 WA 的 Registration 后必须同步更新此表。
+## Overview
+Routing index for the Dispatcher skill. Rules are listed in priority order (highest first).
+This file must be updated whenever a WA's REGISTRATION.md changes.
 
 ---
 
@@ -16,24 +16,24 @@ Dispatcher 的路由索引。优先级从高到低排列。
 **position_id:** {WA_2}
 **role:** AI Quality Architect
 
-### 触发渠道（source_channels）
-- {TEAM_CHANNEL_ID} （{TEAM_NAME} 群）
+### Source Channels
+- {TEAM_CHANNEL_ID}  ({TEAM_NAME} group)
 
-### 触发关键词（trigger_keywords）
-- A面 / A层 / 全流程 / A+6位编码
-- B面 / B层 / ATC编号 / B+8位编码
-- C面 / C层 / Skills / C+8位编码
-- 工作汇报 / 技术报告 / 岗位智能体
-- 归属节点 / 赋能岗位 / 业务目标
+### Trigger Keywords
+- A-layer / A-process / end-to-end / A + 6-digit code
+- B-layer / ATC code / B + 8-digit code
+- C-layer / Skills / C + 8-digit code
+- work report / technical report / position agent
+- parent node / empowered position / business goal
 
-### 默认 ATC
-- ATC-{WA_2}-ASSET-EVALUATE （通用评估）
-- ATC-{WA_2}-RED-LINE-REJECT （触发红线时）
-- ATC-{WA_2}-DAILY-QUALITY-REVIEW （每日汇总）
+### Default ATCs
+- ATC-{WA_2}-ASSET-EVALUATE      (general evaluation)
+- ATC-{WA_2}-RED-LINE-REJECT     (when red line is triggered)
+- ATC-{WA_2}-DAILY-QUALITY-REVIEW (daily summary)
 
-### 时间约束
-- 仅工作日 16:00-18:30 内的消息触发自动路由
-- 其他时间：关键词命中但超时 → {MA_NAME} 告知发送者"请在工作日16:00-18:30提交"
+### Time Constraints
+- Weekdays only, 16:00–18:30
+- Outside this window: keyword matched but outside hours → {MA_NAME} informs sender: "Please submit during weekday 16:00–18:30"
 
 ---
 
@@ -41,20 +41,19 @@ Dispatcher 的路由索引。优先级从高到低排列。
 **position_id:** {WA_1}
 **role:** Chief Summarist
 
-### 触发渠道
-- {CHANNEL_NAME}会议助手私信（meeting_assistant）
-- 任何群中由会议助手发出的会议纪要
+### Source Channels
+- Meeting assistant bot private messages
+- Any group where the meeting assistant posts notes
 
-### 触发关键词
-- 会议纪要 / 会议记录 / 今日会议
-- meeting summary / 纪要
+### Trigger Keywords
+- meeting notes / meeting summary / today's meetings
 
-### 默认 ATC
-- ATC-{WA_1}-MEETING-EXTRACT （单次会议提取）
-- ATC-{WA_1}-DAILY-SUMMARY （每日汇总，由 cron 触发，不走 Dispatcher）
+### Default ATCs
+- ATC-{WA_1}-MEETING-EXTRACT   (single meeting extraction)
+- ATC-{WA_1}-DAILY-SUMMARY     (daily summary — cron only, not dispatched)
 
-### 时间约束
-- 无时间约束，任何时间收到会议纪要均触发
+### Time Constraints
+- None — triggers at any time
 
 ---
 
@@ -62,21 +61,21 @@ Dispatcher 的路由索引。优先级从高到低排列。
 **position_id:** {WA_3}
 **role:** Personal Assistant
 
-### 触发渠道
-- {OWNER_NAME}的私信（仅限{OWNER_NAME}本人发送）
+### Source Channels
+- {OWNER_NAME}'s private messages only
 
-### 触发关键词
-- 记住 / 提醒我 / 记一下
-- 今天 / 明天 / 安排
-- 个人备忘类自然语言
+### Trigger Keywords
+- remember / remind me / note this
+- today / tomorrow / schedule
+- personal memo — natural language
 
-### 默认 ATC
-- ATC-{WA_3}-CAPTURE-THOUGHT （想法捕捉）
-- ATC-{WA_3}-REMINDER （提醒设置）
-- ATC-{WA_3}-EVENING-SUMMARY （由 cron 触发，不走 Dispatcher）
+### Default ATCs
+- ATC-{WA_3}-CAPTURE-THOUGHT    (thought capture)
+- ATC-{WA_3}-REMINDER           (reminder setup)
+- ATC-{WA_3}-EVENING-SUMMARY    (cron only — not dispatched)
 
-### 时间约束
-- 无时间约束
+### Time Constraints
+- None — triggers at any time
 
 ---
 
@@ -84,30 +83,29 @@ Dispatcher 的路由索引。优先级从高到低排列。
 **position_id:** {WA_4}
 **role:** Stock Monitor
 
-### 触发渠道
-- 不通过 Dispatcher 触发（纯 cron 驱动）
-- 仅 {MA_NAME} 可手动触发：询问某支股票价格时
+### Source Channels
+- Not dispatched — cron-driven only
+- {MA_NAME} manual query only
 
-### 触发关键词（仅 {MA_NAME} 手动查询时）
-- 股价 / 股票 / 涨跌幅
+### Trigger Keywords (for {MA_NAME} manual queries only)
+- stock price / stock / change percentage
 
-### 默认 ATC
-- ATC-{WA_4}-SCHEDULED-BROADCAST （由 cron 触发）
-- ATC-{WA_4}-ANOMALY-ALERT （自动触发，不走 Dispatcher）
+### Default ATCs
+- ATC-{WA_4}-SCHEDULED-BROADCAST  (cron only)
+- ATC-{WA_4}-ANOMALY-ALERT         (auto-triggered — not dispatched)
 
-### 时间约束
-- 交易日 09:30-15:30
+### Time Constraints
+- Trading days only: 09:30–15:30
 
 ---
 
-## {MA_NAME} 自处理（NO_MATCH）
+## MA Direct Handling (NO_MATCH)
 
-以下情况由 {MA_NAME} 直接处理，不分发给任何 WA：
-- 技术问题咨询
-- 系统配置请求
-- 跨 WA 的综合性问题
-- 闲聊、问候
-- 不符合任何 WA 能力范围的任务
+The following are handled by {MA_NAME} directly — not dispatched to any WA:
+- General questions and conversation
+- System configuration requests
+- Cross-WA synthesis tasks
+- Anything outside all WA capability scopes
 
-{MA_NAME} 处理后写入：
+{MA_NAME} logs all NO_MATCH handling to:
 {WORKSPACE}/audit/{ma_id}-handled.jsonl

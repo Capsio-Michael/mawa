@@ -150,35 +150,35 @@ Write to: `{WORKSPACE}/cost/weekly/cost-report-{YYYY-MM-DD}.md`
 
 ---
 
-### Phase 3: Combined Weekly {CHANNEL_NAME} Report
+### Phase 3: Combined Weekly Report
 
 Send to {OWNER_NAME} via private message:
 
 ```
-🛡️ MAWA 安全 & 成本周报 | {date}
+🛡️ MAWA Security & Cost Weekly Report | {date}
 
-━━━━━━━━ 安全状态 ━━━━━━━━
-零信任状态：{STRONG ✅ / MODERATE ⚠️ / NEEDS_ATTENTION 🔴}
+━━━━━━━━ Security Status ━━━━━━━━
+Zero-Trust Posture: {STRONG ✅ / MODERATE ⚠️ / NEEDS_ATTENTION 🔴}
 
-本周边界防护：
-• 捕获越权尝试：{total} 次
-• IPCP 违规拦截：{n} 次
-• Quality Gate 拦截：{n} 次
-{if flags: "⚠️ 需关注：{flag_count} 项，详见报告"}
+Boundary Enforcement This Week:
+• Unauthorized attempts caught:  {total}
+• IPCP violations intercepted:   {n}
+• Quality gate blocks:           {n}
+{if flags: "⚠️ Attention required: {flag_count} items — see full report"}
 
-━━━━━━━━ 成本状态 ━━━━━━━━
-本周总估算 Token：{total}
-最高消耗岗位：{position} ({n} tokens)
-Playbook 效率：{pct}% {↑↓→}
-{if trend improving: "✅ 成本持续优化中"}
-{if trend worsening: "⚠️ 成本上升，建议 Curator 审查"}
+━━━━━━━━ Cost Status ━━━━━━━━
+Total estimated tokens this week: {total}
+Highest usage position: {position} ({n} tokens)
+Playbook efficiency: {pct}% {↑↓→}
+{if improving: "✅ Cost trend improving"}
+{if worsening: "⚠️ Cost increasing — Curator review recommended"}
 
-━━━━━━━━ 行动项 ━━━━━━━━
-{list flags + suggestions, or "本周无需人工介入 ✅"}
+━━━━━━━━ Action Items ━━━━━━━━
+{list flags + suggestions, or "No manual intervention required this week ✅"}
 
-📁 完整报告：
-• 安全报告：audit/security-report-{date}.md
-• 成本报告：cost/weekly/cost-report-{date}.md
+📁 Full Reports:
+• Security: audit/security-report-{date}.md
+• Cost:     cost/weekly/cost-report-{date}.md
 
 — {MA_NAME} MAWA Audit 🦞
 ```

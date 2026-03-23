@@ -24,12 +24,12 @@ This ATC overrides all other scoring — result is always FAIL.
 
 ## Developer Reply Format
 ```
-🔴 红线拒绝 | {asset_layer}层 | {asset_code | "无编码"}
+🔴 Red Line Rejection | Layer {asset_layer} | {asset_code | "No Code"}
 
-触发红线：{red_line_reason}
+Red Line Triggered: {red_line_reason}
 
-此资产无法通过质量评估，请修正后重新提交。
-具体要求：{specific_fix_instruction}
+This asset cannot pass quality evaluation. Please correct the issue and resubmit.
+Required fix: {specific_fix_instruction}
 
 — {POSITION_NAME} 🏗️ | Quality is non-negotiable.
 ```

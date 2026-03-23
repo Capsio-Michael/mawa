@@ -18,12 +18,12 @@ TO: {MA_NAME}
 INTENT: Notify-Status
 CORRELATION_ID: {taskrun_id}
 PAYLOAD: {
- "stock_name": "string",
- "stock_code": "string",
- "change_pct": "float",
- "direction": "🔥 Hot | ⚠️ Alert",
- "current_price": "float",
- "broadcast_time": "string"
+  "stock_name": "string",
+  "stock_code": "string",
+  "change_pct": "float",
+  "direction": "🔥 Surge | ⚠️ Drop",
+  "current_price": "float",
+  "broadcast_time": "string"
 }
 ```
 

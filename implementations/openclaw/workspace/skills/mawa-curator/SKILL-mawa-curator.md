@@ -9,8 +9,8 @@ description: MAWA Curator session — {MA_NAME} presents candidate Playbook bull
 # MAWA Curator Skill
 
 ## Trigger
-Activated when {OWNER_NAME} says: "开始Curator", "start curator", or
-"review playbook candidates"
+Activated when {OWNER_NAME} says: "start curator", "start curator review",
+or "review playbook candidates"
 
 ## Execution Workflow
 
@@ -19,38 +19,38 @@ Activated when {OWNER_NAME} says: "开始Curator", "start curator", or
 2. Filter to only unreviewed candidates (no "reviewed" flag)
 3. Count total candidates per position
 4. Report to {OWNER_NAME}:
- "发现 {n} 条待审候选策略，涉及 {positions}。开始逐条审查。"
+ "Found {n} pending candidate bullets across {positions}. Starting review."
 
 ### Phase 2: Present Each Candidate (Interactive)
 For each candidate, present in this format and WAIT for decision:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━
-📋 候选策略审查
-位置：{position_id} | 编号：{candidate_id}
-类型：{E执行 / R风险 / Q质量 / D废弃}
-来源：{pattern source}
-出现频率：{occurrence_count} 次 | 置信度：{confidence}
+📋 Candidate Bullet Review
+Position: {position_id} | ID: {candidate_id}
+Type: {E-Execution / R-Risk / Q-Quality / D-Deprecate}
+Source: {pattern source}
+Frequency: {occurrence_count} times | Confidence: {confidence}
 
-触发条件：
+Trigger Condition:
 {condition}
 
-建议动作：
+Proposed Action:
 {action}
 
-完整 Bullet 文本：
+Full Bullet Text:
 {proposed_playbook_text}
 
-支撑 TaskRun：{supporting_taskruns}
+Supporting TaskRuns: {supporting_taskruns}
 ━━━━━━━━━━━━━━━━━━━━━━
-决策：[✅ 批准] [❌ 拒绝] [✏️ 修改] [⏸ 跳过]
+Decision: [✅ Approve] [❌ Reject] [✏️ Edit] [⏸ Skip]
 ```
 
 Wait for {OWNER_NAME}'s response:
-- "批准" / "✅" / "yes" / "approve" → mark APPROVED
-- "拒绝" / "❌" / "no" / "reject" → mark REJECTED, ask for reason
-- "修改" / "edit" → ask "请输入修改后的 bullet 文本", save modified version
-- "跳过" / "skip" → mark PENDING, review next session
+- "approve" / "✅" / "yes" → mark APPROVED
+- "reject" / "❌" / "no" → mark REJECTED, ask for reason
+- "edit" → ask "Please provide the revised bullet text", save modified version
+- "skip" → mark PENDING, review in next session
 
 ### Phase 3: Conflict Detection
 Before writing approved bullets to Playbook, check:
@@ -125,22 +125,22 @@ Bullets explicitly rejected by {OWNER_NAME} → moved to DEPRECATED section, nev
 At end of Curator session, report:
 
 ```
-✅ Curator 会话完成 | {date}
+✅ Curator Session Complete | {date}
 
-审查结果：
-• 批准：{n} 条
-• 拒绝：{n} 条
-• 修改：{n} 条
-• 跳过（下次）：{n} 条
+Review Results:
+• Approved:  {n}
+• Rejected:  {n}
+• Edited:    {n}
+• Skipped:   {n}
 
-Playbook 更新：
-• {WA_1} → v{N} (PILOT) — {n} 新 bullets
-• {WA_2} → v{N} (PILOT) — {n} 新 bullets
-• {WA_3} → v{N} (PILOT) — {n} 新 bullets
-• {WA_4} → 无变化（{n} 条跳过）
+Playbook Updates:
+• {WA_1} → v{N} (PILOT) — {n} new bullets
+• {WA_2} → v{N} (PILOT) — {n} new bullets
+• {WA_3} → v{N} (PILOT) — {n} new bullets
+• {WA_4} → no changes ({n} skipped)
 
-下次 Reflector 运行：{next Sunday 22:00}
-下次 Curator 建议时间：{2 weeks later}
+Next Reflector run: {next Sunday 22:00}
+Suggested next Curator session: {2 weeks later}
 
-Team {TEAM_NAME} Playbook 持续进化中 🦞
+Team {TEAM_NAME} Playbooks are evolving 🦞
 ```

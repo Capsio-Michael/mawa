@@ -1,72 +1,69 @@
 ---
 name: mawa-dispatcher
-description: MAWA 统一任务分发器。{MA_NAME} 收到任何消息后调用此 Skill，
- 自动读取所有 WA 的 REGISTRATION.md，判断任务是否匹配某个 WA 的能力范围，
- 匹配则自动按标准 ATC 分发执行，不匹配则返回 "NO_MATCH" 由 {MA_NAME} 自行处理。
+description: MAWA unified task dispatcher. Called by {MA_NAME} on every inbound message.
+  Reads the MAWA_DISPATCH_TABLE, matches the message to a WA, and routes it via ATC.
+  Returns NO_MATCH if no WA fits — {MA_NAME} handles directly.
 ---
 
 # MAWA Task Dispatcher
 
-## 核心职责
-这是 {MA_NAME} 的"大脑路由层"。
-每次收到消息，先过这个 Dispatcher，再决定谁来做。
+## Core Responsibility
+This is {MA_NAME}'s routing layer.
+Every inbound message passes through the Dispatcher before any action is taken.
 
-## 执行流程
+## Execution Flow
 
-### Phase 1: 读取 Dispatch Table
-读取文件：{WORKSPACE}/MAWA_DISPATCH_TABLE.md
-这是所有 WA 能力和触发规则的索引（比每次读4个 REGISTRATION.md 更快）。
+### Phase 1: Load Dispatch Table
+Read: {WORKSPACE}/MAWA_DISPATCH_TABLE.md
+This is faster than reading all WA REGISTRATION.md files on every message.
 
-### Phase 2: 消息解析
-从输入消息中提取：
-- 来源群/渠道 ID
-- 发送者
-- 消息内容
-- 消息类型（文本/引用/@mention）
+### Phase 2: Parse Message
+Extract from the input message:
+- Source channel / group ID
+- Sender identity
+- Message content
+- Message type (text / quote / @mention)
 
-### Phase 3: 规则匹配（按优先级顺序）
+### Phase 3: Rule Matching (in priority order)
 
-**规则匹配顺序：**
+1. Exact ATC match
+   Message contains a specific ATC ID (e.g., "ATC-{POSITION_ID}-ASSET-EVALUATE")
+   → Route directly to the corresponding WA. Skip remaining rules.
 
-1. 精确 ATC 匹配
- 消息中包含明确的 ATC ID（如 "ATC-{POSITION_ID}-ASSET-EVALUATE"）
- → 直接路由到对应 WA，跳过其他规则
+2. Keyword match
+   Message content matches a WA's trigger_keywords in the Dispatch Table
+   → Route to the first matching WA and its default ATC
 
-2. 关键词匹配
- 对照 DISPATCH_TABLE 中每个 WA 的 trigger_keywords
- → 找到第一个匹配的 WA 和对应 ATC
+3. Source channel match
+   Message origin matches a WA's declared source_channels
+   → Route to the bound WA
 
-3. 来源渠道匹配
- 消息来自特定群/渠道，且该群绑定了特定 WA
- → 路由到绑定的 WA
+4. No match
+   → Return NO_MATCH. {MA_NAME} handles directly.
 
-4. 无匹配
- → 返回 NO_MATCH，由 {MA_NAME} 自行处理
+### Phase 4: Dispatch
 
-### Phase 4: 执行分发
+**On match:**
+1. Reply in the source channel:
+   "Received [{sender}'s {task_type}] — assigned to {WA_name} under {ATC_ID}."
+2. Notify the WA to execute the ATC, passing:
+   - Original message content
+   - Sender identity
+   - Source channel
+   - Timestamp
+3. Write IPCP log:
+   [IPCP] FROM: {MA_NAME} / TO: {WA} / INTENT: Request-ATC /
+   CORRELATION_ID: {uuid} /
+   PAYLOAD: {"atc": "{ATC_ID}", "source": "{channel}", "submitted_by": "{sender}", "message": "{summary}"}
+4. Write TaskRun:
+   {WORKSPACE}/taskruns/{ma_id}/{date}/DISPATCH-{uuid}.json
 
-**匹配成功时：**
-1. 在原消息渠道回复：
- "收到 [{发送者}的{任务类型}]，已分配给 {WA名称} 按 {ATC_ID} 标准执行。"
-2. 通知对应 WA 执行 ATC，传递：
- - 原始消息内容
- - 发送者
- - 来源渠道
- - 时间戳
-3. 写 IPCP 日志：
- [IPCP] FROM: {MA_NAME} / TO: {WA} / INTENT: Request-ATC /
- CORRELATION_ID: {uuid} /
- PAYLOAD: {"atc": "{ATC_ID}", "source": "{渠道}", "submitted_by": "{发送者}",
- "message": "{内容摘要}"}
-4. 写 TaskRun：
- {WORKSPACE}/taskruns/{ma_id}/{date}/DISPATCH-{uuid}.json
-
-**NO_MATCH 时：**
-返回以下结构给 {MA_NAME}：
+**On NO_MATCH:**
+Return the following to {MA_NAME}:
 {
- "matched": false,
- "reason": "无匹配的 WA 能力",
- "suggested_action": "{MA_NAME} 自行处理",
- "original_message": "{消息内容}"
+  "matched": false,
+  "reason": "No WA capability match",
+  "suggested_action": "{MA_NAME} handle directly",
+  "original_message": "{message content}"
 }
-{MA_NAME} 收到后根据情况自行回复，不需要再调用 Dispatcher。
+{MA_NAME} responds based on context. No further Dispatcher call needed.

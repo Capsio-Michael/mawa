@@ -126,31 +126,31 @@ week_covered: {start} to {end}
 ```
 
 ### Phase 5: Send Weekly Summary to {OWNER_NAME}
-Send {CHANNEL_NAME} private message:
+
+Send private message:
 
 ```
-🔍 MAWA Reflector 周报 | {date}
+🔍 MAWA Reflector Weekly Report | {date}
 
-本周 TaskRun 分析完成：
+TaskRun analysis complete for this week:
 
-📊 执行数据：
-• {WA_1}: {n} 次执行，{pass_rate}% 通过率
-• {WA_2}: {n} 次执行，{pass_rate}% 通过率
-• {WA_3}: {n} 次执行，{pass_rate}% 通过率
-• {WA_4}: {n} 次执行，{pass_rate}% 通过率
+📊 Execution Stats:
+• {WA_1}: {n} executions, {pass_rate}% pass rate
+• {WA_2}: {n} executions, {pass_rate}% pass rate
+• {WA_3}: {n} executions, {pass_rate}% pass rate
+• {WA_4}: {n} executions, {pass_rate}% pass rate
 
-💡 新候选策略：
-• {WA_1}: {n} 条新候选
-• {WA_2}: {n} 条新候选
-• {WA_3}: {n} 条新候选
-• {WA_4}: {n} 条新候选
+💡 New Candidate Bullets:
+• {WA_1}: {n} new candidates
+• {WA_2}: {n} new candidates
+• {WA_3}: {n} new candidates
+• {WA_4}: {n} new candidates
 
-⚠️ 建议废弃策略：{total} 条
+⚠️ Bullets Flagged for Deprecation: {total}
 
-📁 候选文件已写入 playbook-candidates/ 目录
+📁 Candidate files written to playbook-candidates/
 
-请在方便时启动 Curator 会话进行策略审查。
-回复"开始Curator"即可启动。
+Review candidates when ready — reply "start curator" to begin.
 
 — {MA_NAME} Reflector 🦞
 ```

@@ -46,15 +46,15 @@ retry_max: 2
 
 ## Broadcast Message Format
 ```
-📈 股票播报 | {broadcast_time}
+📈 Stock Update | {broadcast_time}
 
 {for each stock:}
-【{name} {code}】
-来源：{source}
-昨收：{prev_close} → 现价：{current_price}
-涨跌幅：{calculated_change_pct}%（计算值）| 数据源：{source_change_pct}%
-状态：{✅ 一致 | ❓ 待核实}
-{if anomaly: "{anomaly_flag} 异常警报"}
+[{name} {code}]
+Source: {source}
+Prev Close: {prev_close} → Current: {current_price}
+Change: {calculated_change_pct}% (calculated) | Source: {source_change_pct}%
+Status: {✅ Consistent | ❓ Pending Verification}
+{if anomaly: "{anomaly_flag} Anomaly Alert"}
 
 — {POSITION_NAME} 📈
 ```

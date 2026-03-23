@@ -79,19 +79,19 @@ retry_max: 1
 
 ## Developer Reply Format (send to group thread)
 ```
-📋 质量评估报告 | {asset_layer}层 | {asset_code}
+📋 Quality Evaluation Report | Layer {asset_layer} | {asset_code}
 
-评分：{score}/100
-结果：{PASS ✅ | FAIL ❌}
-{if red_line_triggered: "🔴 红线触发：{red_line_reason}"}
+Score: {score}/100
+Result: {PASS ✅ | FAIL ❌}
+{if red_line_triggered: "🔴 Red Line Triggered: {red_line_reason}"}
 
-维度评分：
-• 编码规范：{code_format}/20
-• 完整性：{completeness}/30 
-• 结构质量：{structure_quality}/30
-• 可追溯性：{traceability}/20
+Dimension Scores:
+• Code Format:    {code_format}/20
+• Completeness:   {completeness}/30
+• Structure:      {structure_quality}/30
+• Traceability:   {traceability}/20
 
-改进建议：
+Improvement Suggestions:
 {improvement_suggestions as numbered list}
 
 — {POSITION_NAME} 🏗️ | Quality is non-negotiable.

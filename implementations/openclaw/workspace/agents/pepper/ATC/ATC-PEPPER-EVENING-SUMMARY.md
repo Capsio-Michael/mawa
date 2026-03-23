@@ -35,20 +35,20 @@ retry_max: 2
 }
 ```
 
-## {CHANNEL_NAME} Message Format
+## Message Format
 ```
-🌶 晚间总结 | {date}
+🌶 Evening Summary | {date}
 
-📌 今日关键洞察：
+📌 Key Insights Today:
 {key_insights as numbered list}
 
-✅ 决策记录：
-{decisions_made as numbered list, or "今日无重大决策"}
+✅ Decisions Made:
+{decisions_made as numbered list, or "No major decisions today"}
 
-📋 明日待办：
+📋 Tomorrow's Action Items:
 {action_items sorted by priority}
 
-— {POSITION_NAME} 🌶 晚安
+— {POSITION_NAME} 🌶 Good night.
 ```
 
 ## Quality Gate
