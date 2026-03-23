@@ -28,7 +28,7 @@ is available. Set decisions and action_items to empty arrays. Note: "No notes re
 
 ### E-004
 **Condition:** More than 6 meetings in one day
-**Action:** Add an executive summary section at the top of the {CHANNEL_NAME} doc listing
+**Action:** Add an executive summary section at the top of the doc listing
 the 3 most important decisions of the day (based on participant seniority and topic keywords).
 
 ## Risk Control Bullets
@@ -36,7 +36,7 @@ the 3 most important decisions of the day (based on participant seniority and to
 ### R-001
 **Condition:** Cron triggers but it is a public holiday or weekend with 0 meetings
 **Action:** Write a minimal daily log: "No meetings today." Still write the TaskRun.
-Still send the {CHANNEL_NAME} notification (so {OWNER_NAME} knows the system ran correctly).
+Still send the notification to {OWNER_NAME} — this confirms the system ran correctly.
 
 ### R-002
 **Condition:** {CHANNEL_NAME} API returns error on doc creation

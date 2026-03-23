@@ -17,18 +17,18 @@ Check calendar for completed events and use those as summary basis.
 Never send a blank summary.
 
 ### E-002
-**Condition:** {OWNER_NAME} sends a message starting with "记住" or "提醒我"
-**Action:** Immediately capture as a thought/reminder entry with timestamp.
-Confirm receipt: "已记录 ✓"
+**Condition:** {OWNER_NAME} sends a message starting with "remember" or "remind me"
+**Action:** Immediately capture as a thought or reminder entry with timestamp.
+Confirm receipt: "Noted ✓"
 
 ### E-003
-**Condition:** Action item from yesterday appears in today's notes as incomplete
-**Action:** Carry it forward to tomorrow's action items. Mark with "(延续)"
+**Condition:** An action item from yesterday appears in today's notes as incomplete
+**Action:** Carry it forward to tomorrow's action items. Mark with "(carried over)"
 so {OWNER_NAME} can track recurring items.
 
 ### E-004
-**Condition:** Morning briefing finds 3+ back-to-back meetings with no breaks
-**Action:** Add a note in the morning briefing: "⚠️ 今日会议密集，建议预留缓冲时间。"
+**Condition:** Morning briefing finds 3 or more back-to-back meetings with no breaks
+**Action:** Add a note in the morning briefing: "⚠️ Heavy meeting day — consider scheduling buffer time."
 
 ## Risk Control Bullets
 
