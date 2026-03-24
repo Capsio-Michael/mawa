@@ -158,12 +158,40 @@ We welcome implementations. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Real-World Validation
 
-MAWA was developed and validated over 3 months building a production multi-agent team:
+MAWA is not a research project. It is a production framework with a 3-year enterprise deployment history.
 
-- **4 WAs** running in parallel daily
-- **5/5 validation tests passing** across all agents
-- **Self-improving** — Playbooks evolved from v1 PILOT to SOTA through the Reflector/Curator loop
-- **Zero governance failures** — no agent has accessed data outside its Registration in production
+### The Track Record
+
+**2023 — Enterprise Data Governance**
+Capsio (the team behind MAWA) achieved SAP global integration certification and launched on the SAP App Store with an enterprise data governance platform. Core insight: enterprise AI fails not because of model capability, but because of missing standards, traceability, and governance.
+
+**2024 — Agentic Task Card + MAWA Framework**
+The ATC (Agentic Task Card) and MAWA architecture were formalized as a position-based AI governance system. Recognized with the Future AI Pioneer Award at the 2024 German Asia-Pacific Business Summit (AHK), co-presented with SAP China Research Institute.
+
+> "Capsio's AI-driven data governance platform... enables enterprises to achieve position task digitization, process intelligence, and decision data-driven operations."
+> — SAP China Research Institute
+
+**2025 — Human-Robot Collaboration**
+MAWA extended beyond software agents to physical execution. In collaboration with MagicLab (humanoid robotics), the framework now governs warehouse task automation spanning SAP LGM → Capsio ATC → humanoid robots. The full platform is available on the SAP App Store as the ATC Intelligent Task Orchestration Platform.
+
+- Generates, assigns, and executes warehouse tasks intelligently
+- Supports MagicLab bipedal humanoid robots for high-risk and repetitive operations
+- Selected as Top 3 Best Case at AHK Innovation Night 2025
+- Live demo environment visited by 670+ enterprise customers at SAP China Research Institute Future Exhibition Hall
+
+### What This Means for MAWA
+
+The same governance principles that coordinate AI agents — Registration boundaries, ATC task cards, Playbook strategy evolution, IPCP communication protocol, TaskRun audit trails — have been validated at every layer of enterprise operations:
+
+```
+SAP ERP Data Layer
+      ↓
+MAWA Position Agents (MA + WA)
+      ↓
+Humanoid Robot Execution (MagicLab)
+```
+
+MAWA is not designed for demos. It is designed for production environments where agents must be accountable, auditable, and continuously improving — just like the human employees they work alongside.
 
 ---
 
