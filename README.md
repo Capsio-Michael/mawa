@@ -172,7 +172,7 @@ The ATC (Agentic Task Card) and MAWA architecture were formalized as a position-
 > — SAP China Research Institute
 
 **2025 — Human-Robot Collaboration**
-MAWA extended beyond software agents to physical execution. In collaboration with MagicLab (humanoid robotics), the framework now governs warehouse task automation spanning SAP LGM → Capsio ATC → humanoid robots. The full platform is available on the SAP App Store as the ATC Intelligent Task Orchestration Platform.
+MAWA extended beyond software agents to physical execution. The framework now governs warehouse task automation spanning SAP LGM → Capsio ATC → humanoid robots. Robot-agnostic by design — currently integrated with MagicLab and Unitree robots, with a vendor-neutral connection layer that supports robots from different manufacturers. The full platform is available on the SAP App Store as the ATC Intelligent Task Orchestration Platform.
 
 - Generates, assigns, and executes warehouse tasks intelligently
 - Supports MagicLab bipedal humanoid robots for high-risk and repetitive operations
