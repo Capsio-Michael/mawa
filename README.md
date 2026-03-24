@@ -166,18 +166,37 @@ MAWA is not a research project. It is a production framework with a 3-year enter
 Capsio (the team behind MAWA) achieved SAP global integration certification and launched on the SAP App Store with an enterprise data governance platform. Core insight: enterprise AI fails not because of model capability, but because of missing standards, traceability, and governance.
 
 **2024 — Agentic Task Card + MAWA Framework**
-The ATC (Agentic Task Card) and MAWA architecture were formalized as a position-based AI governance system. Recognized with the Future AI Pioneer Award at the 2024 German Asia-Pacific Business Summit (AHK), co-presented with SAP China Research Institute.
+The ATC (Agentic Task Card) and MAWA architecture were formalized as a position-based AI governance system. Recognized with the **Future AI Pioneer Award** at the 2024 German Asia-Pacific Business Summit (AHK), co-presented with SAP China Research Institute.
 
-> "Capsio's AI-driven data governance platform... enables enterprises to achieve position task digitization, process intelligence, and decision data-driven operations."
+> *"Capsio's AI-driven data governance platform... enables enterprises to achieve position task digitization, process intelligence, and decision data-driven operations."*
 > — SAP China Research Institute
 
 **2025 — Human-Robot Collaboration**
-MAWA extended beyond software agents to physical execution. The framework now governs warehouse task automation spanning SAP LGM → Capsio ATC → humanoid robots. Robot-agnostic by design — currently integrated with MagicLab and Unitree robots, with a vendor-neutral connection layer that supports robots from different manufacturers. The full platform is available on the SAP App Store as the ATC Intelligent Task Orchestration Platform.
-
+MAWA extended beyond software agents to physical execution. The framework now governs warehouse task automation spanning SAP LGM → Capsio ATC → humanoid robots. Robot-agnostic by design — currently integrated with MagicLab and Unitree robots, with a vendor-neutral connection layer that supports robots from different manufacturers. The full platform is available on the [SAP App Store](https://www.sap.com/products/artificial-intelligence/partners/capsio-technology-co-ltd-atcintelligent-task-orchestration-platform.html) as the ATC Intelligent Task Orchestration Platform.
 - Generates, assigns, and executes warehouse tasks intelligently
 - Supports MagicLab bipedal humanoid robots for high-risk and repetitive operations
-- Selected as Top 3 Best Case at AHK Innovation Night 2025
+- Selected as **Top 3 Best Case** at AHK Innovation Night 2025
 - Live demo environment visited by 670+ enterprise customers at SAP China Research Institute Future Exhibition Hall
+
+### Independent Academic Validation
+
+MAWA's self-improvement loop — **Reflector → Curator → evolved Playbook** — was designed and deployed in production in 2024. In January 2026, Stanford University published independent academic validation of the same architectural pattern.
+
+The Stanford ACE framework (*Evolving Contexts for Self-Improving Language Models*, arXiv:2510.04618v2, January 2026) proposes a three-role architecture:
+- **Generator** — produces reasoning traces
+- **Reflector** — extracts insights from successes and failures
+- **Curator** — integrates insights into structured context updates
+
+This maps directly to MAWA's production implementation:
+
+| Stanford ACE | MAWA |
+|---|---|
+| Generator | WA executing ATCs, producing TaskRuns |
+| Reflector | mawa-reflector skill (weekly TaskRun analysis) |
+| Curator | mawa-curator skill (Playbook candidate review) |
+| Evolving context | Playbook versioning (PILOT → SOTA → LEGACY) |
+
+MAWA reached the same architectural conclusion through enterprise production experience. The Stanford paper provides independent academic confirmation that this design pattern is the correct approach for self-improving agent systems.
 
 ### What This Means for MAWA
 
