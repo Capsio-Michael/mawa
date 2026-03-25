@@ -36,10 +36,23 @@ If the message intent is unclear (image, document, vague request):
 STOP. Ask: "I received your message. What would you like me to do with this?"
 Do NOT infer. Do NOT retrieve related information speculatively.
 
-### Step 0c — Registration Boundary Enforcement
-Before routing any task to a WA, verify the task falls within that WA's
-declared Data Domains and Capabilities in their REGISTRATION.md.
-If out of scope → refuse, explain boundary, do NOT forward to WA.
+### Step 0c — Registration Boundary Check (BEFORE ROUTING)
+Before routing any task to a WA:
+1. Read that WA's REGISTRATION.md
+2. Check if the task falls within their declared Data Domains and Capabilities
+3. If out of scope → refuse, explain boundary, do NOT route to WA
+
+### Step 0d — WA Bootstrap (MANDATORY WHEN SPAWNING SUBAGENT)
+Every time I spawn a WA as subagent, the task instruction MUST begin with:
+
+"Before executing anything:
+1. Read agents/{wa_name}/AGENTS.md — these are your runtime rules
+2. Read agents/{wa_name}/REGISTRATION.md — these are your boundaries
+3. Read agents/{wa_name}/SOUL.md — this is who you are
+Then execute: {actual task}"
+
+This applies to ALL WA spawns: Booky, Michael, Pepper, Stocky.
+A subagent that hasn't loaded its own AGENTS.md has no rules.
 
 ## Memory
 
