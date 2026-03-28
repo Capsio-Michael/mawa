@@ -1,0 +1,36 @@
+{
+  "request_id": "AUDIT-SAMPLE-2025-Q1-BLE-DEMO",
+  "entity_id": "BLE-DEMO-001",
+  "entity_name": "Brightline Electronics Pte Ltd",
+  "jurisdiction": "SG",
+  "audit_period": "2025-Q1",
+  "submitted_by": "external_auditor_pwc",
+  "submitted_at": "2025-04-05T10:00:00+08:00",
+  "sampling_parameters": {
+    "method": "MUS",
+    "confidence_level": 0.95,
+    "tolerable_misstatement": 50000.00,
+    "expected_misstatement": 10000.00,
+    "account_code": "1100",
+    "account_name": "Accounts Receivable"
+  },
+  "population": {
+    "total_items": 412,
+    "total_value": 3480000.00,
+    "currency": "SGD",
+    "period_start": "2025-01-01",
+    "period_end": "2025-03-31",
+    "items": [
+      { "item_id": "AR-001", "date": "2025-01-08", "amount": 24500.00, "customer": "Teak Industries" },
+      { "item_id": "AR-002", "date": "2025-01-15", "amount": 112000.00, "customer": "Pacific Ventures" },
+      { "item_id": "AR-003", "date": "2025-01-22", "amount": 8750.00, "customer": "Meihua Retail" },
+      { "item_id": "AR-004", "date": "2025-02-03", "amount": 67300.00, "customer": "SunTech SG" },
+      { "item_id": "AR-005", "date": "2025-02-18", "amount": 195000.00, "customer": "Changshu Holdings" },
+      { "item_id": "AR-006", "date": "2025-03-07", "amount": 43200.00, "customer": "Apex Retail" },
+      { "item_id": "AR-007", "date": "2025-03-14", "amount": 88900.00, "customer": "Bright Star Ltd" },
+      { "item_id": "AR-008", "date": "2025-03-21", "amount": 315000.00, "customer": "GrandLink Corp" },
+      { "item_id": "AR-009", "date": "2025-03-28", "amount": 52100.00, "customer": "Tanaka Trading" }
+    ],
+    "_note": "Full 412-item population truncated to 9 representative items for demo. SampleBot should apply MUS with $50k tolerable misstatement."
+  }
+}

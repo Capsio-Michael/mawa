@@ -1,0 +1,89 @@
+{
+  "run_id": "CLOSE-SG-2025-03",
+  "entity_id": "MFG-DEMO-001",
+  "entity_name": "Metaforge Manufacturing Pte Ltd",
+  "period": "2025-03",
+  "processed_at": "2025-04-01T08:12:43+08:00",
+  "processing_time_ms": 461000,
+  "status": "escalated",
+  "overall_status": "ESCALATED",
+  "confidence": 0.74,
+  "sign_off_required": true,
+  "agent_trace": [
+    { "agent": "Iris", "action": "dispatch", "timestamp": "2025-04-01T08:05:12+08:00" },
+    { "agent": "LedgerBot", "action": "gl_reconciliation", "status": "pass", "confidence": 0.92, "timestamp": "2025-04-01T08:07:18+08:00" },
+    { "agent": "JournalBot", "action": "je_review", "status": "fail", "confidence": 0.61, "timestamp": "2025-04-01T08:09:44+08:00" },
+    { "agent": "VarBot", "action": "variance_analysis", "status": "pass", "confidence": 0.88, "timestamp": "2025-04-01T08:11:02+08:00" },
+    { "agent": "ReportBot", "action": "assemble_close_pack", "status": "escalated", "confidence": 0.74, "timestamp": "2025-04-01T08:12:43+08:00" },
+    { "agent": "Iris", "action": "escalate_to_controller", "escalation_reason": "JE-2025-0443 SOD breach + round number > $50k requires controller sign-off", "timestamp": "2025-04-01T08:12:45+08:00" }
+  ],
+  "sections": [
+    {
+      "section": "GL Reconciliation",
+      "status": "QUALIFIED",
+      "summary": "1 unmatched AR item ($3,700 credit note CR-NOTE-2025-0089) classified as timing_difference. Subledger-side only. Expected to clear in April.",
+      "open_items_count": 1
+    },
+    {
+      "section": "Journal Entry Review",
+      "status": "ESCALATED",
+      "summary": "2 of 3 JEs flagged. JE-2025-0442: after-cutoff posting (Apr 2 post for Mar period). JE-2025-0443: SOD breach (preparer == approver) on $100,000 write-off.",
+      "open_items_count": 2
+    },
+    {
+      "section": "Variance Analysis",
+      "status": "CLEAN",
+      "summary": "All accounts within 10% variance threshold. Revenue +2.1% vs prior period. OpEx +3.4% vs prior period. No CFO review required from variance section.",
+      "open_items_count": 0
+    }
+  ],
+  "open_items": [
+    {
+      "item_id": "OI-2025-03-001",
+      "type": "timing_difference",
+      "account": "1100",
+      "amount": 3700.00,
+      "description": "Credit note CR-NOTE-2025-0089 not yet posted to GL",
+      "assigned_to": "staff_chen_min",
+      "due_date": "2025-04-05",
+      "priority": "LOW"
+    },
+    {
+      "item_id": "OI-2025-03-002",
+      "type": "je_cutoff_violation",
+      "je_id": "JE-2025-0442",
+      "amount": 18500.00,
+      "description": "Revenue reversal JE posted 2 days after period close (Apr 2). Requires controller to confirm period allocation.",
+      "assigned_to": "mgr_liu_yang",
+      "due_date": "2025-04-03",
+      "priority": "MEDIUM"
+    },
+    {
+      "item_id": "OI-2025-03-003",
+      "type": "sod_breach",
+      "je_id": "JE-2025-0443",
+      "amount": 100000.00,
+      "description": "Bad debt write-off: preparer and approver are same individual (mgr_liu_yang). Round number $100,000 on Q1 write-off. Controller sign-off required before this JE is accepted.",
+      "assigned_to": "CFO-LIM-WEI",
+      "due_date": "2025-04-03",
+      "priority": "HIGH"
+    }
+  ],
+  "escalation_details": {
+    "escalated_to": "CFO-LIM-WEI",
+    "escalation_reason": "JE-2025-0443 SOD breach on $100,000 write-off requires CFO sign-off per SFRS internal control requirements",
+    "escalated_at": "2025-04-01T08:12:45+08:00",
+    "ipcp_message": "[IPCP] FROM: Iris / TO: CFO-LIM-WEI / INTENT: escalate_for_review / CORRELATION_ID: CLOSE-SG-2025-03-ESC-001 / PAYLOAD: 2 open JE items require controller action before March close can be marked CLEAN. OI-2025-03-002 (cutoff) and OI-2025-03-003 (SOD breach $100k write-off). See close_pack for full detail."
+  },
+  "taskrun": {
+    "task_id": "AP-ACC-001",
+    "run_id": "CLOSE-SG-2025-03",
+    "started_at": "2025-04-01T08:05:12+08:00",
+    "completed_at": "2025-04-01T08:12:45+08:00",
+    "outcome": "escalated",
+    "quality_gate_result": "FAIL",
+    "quality_gate_reason": "confidence 0.74 < threshold 0.75 AND open_items contains HIGH priority item",
+    "playbook_bullets_cited": ["Q-003: Round-number JEs > $50k always require SOD check before close acceptance"],
+    "cost_tokens": 18420
+  }
+}

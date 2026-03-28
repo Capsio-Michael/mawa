@@ -1,0 +1,56 @@
+{
+  "entity_id": "MFG-DEMO-001",
+  "period": "2025-03",
+  "extracted_at": "2025-04-01T08:05:00+08:00",
+  "gl_accounts": [
+    {
+      "account_code": "1100",
+      "account_name": "Accounts Receivable",
+      "gl_balance": 485200.00,
+      "subledger_balance": 481500.00,
+      "variance": 3700.00,
+      "line_items": [
+        { "line_id": "GL-1100-001", "ref": "INV-2025-0312", "date": "2025-03-15", "amount": 125000.00, "description": "Invoice Tan Corp" },
+        { "line_id": "GL-1100-002", "ref": "INV-2025-0318", "date": "2025-03-18", "amount": 89500.00, "description": "Invoice Bright Star Ltd" },
+        { "line_id": "GL-1100-003", "ref": "ADJ-2025-0331", "date": "2025-03-31", "amount": 3700.00, "description": "Unposted credit note — pending approval" }
+      ]
+    },
+    {
+      "account_code": "2100",
+      "account_name": "Accounts Payable",
+      "gl_balance": 312800.00,
+      "subledger_balance": 312800.00,
+      "variance": 0.00,
+      "line_items": [
+        { "line_id": "GL-2100-001", "ref": "PO-2025-0287", "date": "2025-03-10", "amount": 145000.00, "description": "Supplier: Meihua Components" },
+        { "line_id": "GL-2100-002", "ref": "PO-2025-0301", "date": "2025-03-22", "amount": 167800.00, "description": "Supplier: Pacific Logistics" }
+      ]
+    },
+    {
+      "account_code": "5100",
+      "account_name": "Revenue",
+      "gl_balance": 1240000.00,
+      "subledger_balance": 1240000.00,
+      "variance": 0.00,
+      "line_items": []
+    },
+    {
+      "account_code": "6200",
+      "account_name": "Operating Expenses",
+      "gl_balance": 398500.00,
+      "subledger_balance": 398500.00,
+      "variance": 0.00,
+      "line_items": []
+    }
+  ],
+  "subledger_unmatched": [
+    {
+      "ref": "CR-NOTE-2025-0089",
+      "date": "2025-03-28",
+      "amount": -3700.00,
+      "account": "1100",
+      "description": "Credit note issued to Tan Corp — not yet posted to GL",
+      "_note": "This item explains the AR variance. LedgerBot should classify as timing_difference."
+    }
+  ]
+}

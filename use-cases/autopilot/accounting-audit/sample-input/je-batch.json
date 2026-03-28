@@ -1,0 +1,52 @@
+{
+  "batch_id": "JE-BATCH-2025-03-MFG-DEMO",
+  "entity_id": "MFG-DEMO-001",
+  "period": "2025-03",
+  "total_jes": 3,
+  "journal_entries": [
+    {
+      "je_id": "JE-2025-0441",
+      "date": "2025-03-28",
+      "amount": 45000.00,
+      "debit_account": "6200",
+      "credit_account": "2100",
+      "description": "Accrual — March consulting fees, Apex Advisory",
+      "preparer": "staff_chen_min",
+      "approver": "mgr_liu_yang",
+      "authorized": true,
+      "cutoff_compliant": true,
+      "sod_compliant": true,
+      "supporting_doc": "ACCRUAL-2025-0441.pdf"
+    },
+    {
+      "je_id": "JE-2025-0442",
+      "date": "2025-04-02",
+      "amount": 18500.00,
+      "debit_account": "5100",
+      "credit_account": "1100",
+      "description": "Revenue reversal — disputed invoice INV-2025-0295",
+      "preparer": "staff_wong_kar",
+      "approver": "mgr_liu_yang",
+      "authorized": true,
+      "cutoff_compliant": false,
+      "sod_compliant": true,
+      "supporting_doc": "REVERSAL-2025-0442.pdf",
+      "_flag": "after_cutoff — posted 2 days after period close. JournalBot should flag."
+    },
+    {
+      "je_id": "JE-2025-0443",
+      "date": "2025-03-31",
+      "amount": 100000.00,
+      "debit_account": "6200",
+      "credit_account": "1100",
+      "description": "Write-off — bad debt provision Q1",
+      "preparer": "mgr_liu_yang",
+      "approver": "mgr_liu_yang",
+      "authorized": true,
+      "cutoff_compliant": true,
+      "sod_compliant": false,
+      "supporting_doc": "WRITEOFF-2025-0443.pdf",
+      "_flag": "segregation_breach — preparer == approver AND round number > $50,000. High risk."
+    }
+  ]
+}

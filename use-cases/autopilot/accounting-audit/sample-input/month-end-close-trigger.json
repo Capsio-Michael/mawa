@@ -1,0 +1,18 @@
+{
+  "run_id": "CLOSE-SG-2025-03",
+  "period": "2025-03",
+  "entity_id": "MFG-DEMO-001",
+  "entity_name": "Metaforge Manufacturing Pte Ltd",
+  "jurisdiction": "SG",
+  "accounting_standard": "SFRS",
+  "triggered_by": "scheduled_cron",
+  "triggered_at": "2025-04-01T08:00:00+08:00",
+  "close_deadline": "2025-05-15",
+  "controller": "CFO-LIM-WEI",
+  "external_auditor": null,
+  "run_components": ["gl_reconciliation", "je_review", "variance_analysis", "close_report"],
+  "variance_threshold_pct": 0.10,
+  "variance_threshold_abs": 10000,
+  "prior_period": "2025-02",
+  "notes": "March close — includes Q1 end. Full variance analysis against budget required."
+}
