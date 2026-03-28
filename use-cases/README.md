@@ -29,3 +29,7 @@ Every pack contains:
 
 Copy `_template/` into the correct quadrant folder and fill in each file.
 Follow the naming conventions in `spec/MAWA-SPEC.md`.
+
+See [GLOSSARY.md](GLOSSARY.md) for definitions of all regulatory frameworks,
+accounting standards, and industry terms used across the packs. Add new terms
+when contributing a pack.

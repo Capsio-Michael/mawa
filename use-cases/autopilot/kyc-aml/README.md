@@ -44,3 +44,32 @@ which TaskRun provides by design.
 - BNM AML/CFT Policy (Malaysia)
 - OJK Regulation No. 12/POJK.01/2017 (Indonesia)
 - OFAC SDN List, UN Consolidated List, EU Consolidated Financial Sanctions List
+
+## Glossary
+
+**KYC** — Know Your Customer. The process of verifying a customer's identity
+before onboarding them. Regulators require it to prevent fraud and financial crime.
+
+**AML** — Anti-Money Laundering. Rules and checks designed to detect and prevent
+criminals from disguising illegally obtained funds as legitimate income.
+
+**MAS** — Monetary Authority of Singapore. Singapore's central bank and financial
+regulator. Sets the KYC/AML requirements that all Singapore-licensed financial
+institutions must follow.
+
+**OFAC** — Office of Foreign Assets Control. A US Treasury agency that publishes
+the global sanctions list — individuals, entities, and countries that cannot be
+transacted with. Screening against OFAC is required for any institution with USD
+exposure or US correspondent banking relationships.
+
+**FATF** — Financial Action Task Force. An intergovernmental body that sets the
+global AML/KYC standards adopted by 200+ jurisdictions. Countries on the FATF
+grey list or black list require enhanced due diligence from counterparties worldwide.
+
+**PEP** — Politically Exposed Person. A current or former government official,
+or close associate, who carries elevated money laundering risk due to their
+access to public funds. PEP matches require enhanced due diligence.
+
+**EDD** — Enhanced Due Diligence. A deeper level of customer verification applied
+when standard checks flag elevated risk — for example, a PEP match or high-risk
+jurisdiction. Typically requires human review.
