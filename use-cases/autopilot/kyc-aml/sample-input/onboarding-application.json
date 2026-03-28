@@ -1,0 +1,15 @@
+{
+  "application_id": "KYC-2025-0042",
+  "applicant": {
+    "full_name": "Nguyen Van An",
+    "dob": "1985-03-12",
+    "nationality": "VN",
+    "id_type": "passport",
+    "id_number": "B1234567",
+    "address": "12 Le Loi Street, District 1, Ho Chi Minh City"
+  },
+  "documents_submitted": ["passport_scan", "utility_bill", "selfie"],
+  "source_of_funds": "salary",
+  "account_type": "corporate",
+  "submitted_at": "2025-03-28T09:14:00Z"
+}

@@ -99,15 +99,20 @@ Fully working on OpenClaw. Clone and run.
 - `setup.sh` — one-command bootstrap
 - 5-test validation suite
 
-### Industry Packs (`/packs`)
-Drop-in MAWA configurations for specific use cases.
+### Industry Use-Case Packs (`/use-cases`)
+34 industry packs organized by the Sequoia AI disruption matrix.
 
-| Pack | Agents | Use Case |
+| Quadrant | Packs | AI timing |
 |---|---|---|
-| `tech-team` | Quality Architect + Summarist + Assistant | R&D team daily operations |
-| `customer-ops` | Support + QA + Knowledge + Escalation | Customer service automation |
-| `trading` | Market Monitor + Risk + Report + Alert | Financial data operations |
-| `manufacturing` | QC + Process Engineer + Equipment + Scheduler | Factory floor AI |
+| [Autopilot](use-cases/autopilot/) — Outsourced + Intelligence | 13 packs | Replaces now (P1) |
+| [Next Wave](use-cases/next-wave/) — Insourced + Intelligence | 5 packs | Penetrates next (P2) |
+| [Copilot](use-cases/copilot/) — Outsourced + Judgment | 4 packs | Augments, not replaces (P3) |
+| [Watch](use-cases/watch/) — Insourced + Judgment | 12 packs | Slower adoption (P3) |
+
+Fully built packs (with agents, workflows, sample data): **KYC/AML** and **Payroll & Compliance**.
+All 32 remaining packs are scaffolded and ready to fill.
+
+See [use-cases/README.md](use-cases/README.md) for the full directory.
 
 ---
 

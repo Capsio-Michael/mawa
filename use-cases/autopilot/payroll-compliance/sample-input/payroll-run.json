@@ -1,0 +1,67 @@
+{
+  "run_id": "PAY-SG-2025-03",
+  "period": "2025-03",
+  "company_id": "CAPSIO-SG-001",
+  "jurisdiction": "SG",
+  "triggered_by": "scheduled_cron",
+  "triggered_at": "2025-03-28T06:00:00+08:00",
+  "employees": [
+    {
+      "employee_id": "EMP-001",
+      "full_name": "Tan Wei Ming",
+      "employment_type": "full_time",
+      "ic_number": "S8812345A",
+      "nationality": "SC",
+      "age": 36,
+      "base_salary": 6000.00,
+      "allowances": {
+        "transport": 200.00,
+        "meal": 150.00,
+        "handphone": 50.00
+      },
+      "overtime_hours": 8,
+      "overtime_rate": 1.5,
+      "commission": 0.00,
+      "unpaid_leave_days": 0,
+      "joined_date": "2021-06-01",
+      "resigned_date": null,
+      "bank_account": "DBS-****-3421"
+    },
+    {
+      "employee_id": "EMP-002",
+      "full_name": "Priya Ramasamy",
+      "employment_type": "full_time",
+      "ic_number": "S9034567B",
+      "nationality": "PR",
+      "age": 34,
+      "base_salary": 4200.00,
+      "allowances": {
+        "transport": 100.00,
+        "meal": 100.00
+      },
+      "overtime_hours": 0,
+      "commission": 800.00,
+      "unpaid_leave_days": 1,
+      "joined_date": "2022-11-15",
+      "resigned_date": null,
+      "bank_account": "OCBC-****-8872"
+    },
+    {
+      "employee_id": "EMP-003",
+      "full_name": "Ahmad Fadzillah bin Rashid",
+      "employment_type": "contract",
+      "ic_number": "G8956789P",
+      "nationality": "MY",
+      "age": 41,
+      "base_salary": 3500.00,
+      "allowances": {},
+      "overtime_hours": 0,
+      "commission": 0.00,
+      "unpaid_leave_days": 0,
+      "joined_date": "2024-01-02",
+      "resigned_date": "2025-03-28",
+      "bank_account": "UOB-****-2244",
+      "_note": "Last day 28 Mar — pro-rate and include leave encashment payout"
+    }
+  ]
+}
