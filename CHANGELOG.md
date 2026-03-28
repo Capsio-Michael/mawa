@@ -6,6 +6,32 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.1.1] — 2026-03-28
+
+### Added
+
+**Core Specification (`/spec`)**
+- `MAWA-SPEC.md` — full architecture specification (Position, Registration, ATC, Playbook, IPCP, TaskRun, Dispatcher, Reflector, Curator, WA Bootstrap Protocol)
+- `REGISTRATION-SCHEMA.md` — capability declaration standard with full schema, field reference, enforcement rules, deny log format, and MA registration notes
+
+**Template Completion (`/implementations/openclaw/workspace/agents/_template`)**
+- `REGISTRATION.md` — generic WA registration template with all placeholder fields and inline guidance
+- `SOUL.md` — generic WA personality template including MAWA behavioral rules, deny log, IPCP audit log, cost tracking, pre-flight check, and SLA self-report sections
+- `IDENTITY.md` — generic WA identity + execution rules template (includes MAWA Execution Rules: result delivery, quality_gate FAIL protocol, TaskRun mandatory fields, registration boundary hard stop)
+- `PLAYBOOK/PLAYBOOK.md` — generic playbook template with E-, R-, Q- bullet examples
+- `ATC/ATC-{POSITION_ID}-{TASK_NAME}.md` — generic ATC template with full W-H-A-T structure, input/output schemas, and quality gate rules
+- `WHAT/WHAT.md` — generic task context document template
+
+### Fixed
+- `spec/MAWA-SPEC.md` and `spec/REGISTRATION-SCHEMA.md` were listed in CHANGELOG v0.1.0 and README but did not exist — created
+
+### Notes
+- All new spec files are v1.1
+- Template files use `{PLACEHOLDER}` convention consistently
+- No breaking changes to existing WA files
+
+---
+
 ## [0.1.0] — 2026-03-23
 
 ### Added
