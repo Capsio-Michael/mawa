@@ -213,6 +213,52 @@ Execute better next time
 
 ---
 
+### 9. Memory Architecture
+
+MAWA agents operate across multiple sessions. Without explicit memory management, agents lose context between conversations and cannot maintain continuity of work.
+
+MAWA defines a three-layer memory architecture:
+
+| Layer | File | Update Frequency | Purpose |
+|-------|------|-----------------|---------|
+| **Long-term** | IDENTITY.md / REGISTRATION.md / PLAYBOOK.md | Manual, by owner | Identity, rules, responsibilities, strategies |
+| **Mid-term** | SESSION-CONTEXT.md | End of every session | Work-in-progress state, pending decisions, pipeline status |
+| **Short-term** | Cron + messaging history | Automatic, daily | Morning briefing, recent activity summary |
+
+**Long-term memory** is stable and changes only when the agent's role, boundaries, or strategy fundamentally change. This is the agent's "who I am and what I do."
+
+**Mid-term memory** (SESSION-CONTEXT.md) is the "workbench" — a running record of what's currently in flight. The agent reads it at the start of every session and updates it at the end. This solves the cross-session context loss problem that affects most LLM agent platforms.
+
+Standard SESSION-CONTEXT.md structure:
+```markdown
+# SESSION-CONTEXT.md — {position_id}
+Last updated: {ISO8601}
+
+## Active Work Items
+{list of in-progress tasks with status and next action}
+
+## Pending Decisions
+{items requiring owner input, priority ordered}
+
+## Pipeline State
+{current state of ongoing workflows — e.g. candidate pipeline, project status}
+
+## Recent Changes
+{changelog of last 3 updates}
+```
+
+Update protocol (must be in IDENTITY.md):
+- Read SESSION-CONTEXT.md at the start of every session
+- Proactively report status based on its contents
+- Update SESSION-CONTEXT.md before ending every session
+- If session is interrupted, use file system as source of truth next session
+
+**Short-term memory** is handled by a scheduled cron job (typically 04:30–07:00) that reads recent messaging history and generates a morning briefing. This gives the agent awareness of what happened while it was "asleep."
+
+**Platform note:** The need for explicit SESSION-CONTEXT.md management varies by platform. Platforms that persist conversation history across sessions may not require it. Platforms that reset context on every new session (e.g. ArkClaw) require it as a mandatory file.
+
+---
+
 ## File Structure
 
 Every MAWA workspace follows this structure:

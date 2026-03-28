@@ -138,8 +138,47 @@ This mirrors how OpenClaw loads bootstrap files — the main agent's files are a
 
 ---
 
+## 8. Three-Layer Memory Architecture — Validated on ArkClaw
+
+**Discovered during:** Apple HR Team implementation on ArkClaw (火山引擎), March 2026
+
+**Problem:** ArkClaw resets the context window on every new conversation. An MA agent had no memory of previous sessions' work — it needed to be re-briefed from scratch each day.
+
+**Solution:** Three-layer memory system using SESSION-CONTEXT.md as the mid-term "workbench" layer.
+
+**Validated behavior:**
+- Before: Agent asked for candidate information that had already been discussed the previous day
+- After: Agent opened each session by reading SESSION-CONTEXT.md and proactively reporting current pipeline state
+
+**Key insight:** SESSION-CONTEXT.md serves the same role as Pepper's memory function in the OpenClaw FClaw team — maintaining work continuity across sessions. Both implementations can be aligned to the same MAWA memory standard.
+
+**Applicability to OpenClaw:** OpenClaw's MEMORY.md serves a similar purpose for long-term memory. For teams doing continuous multi-day work (HR pipelines, project tracking, ongoing workflows), adding SESSION-CONTEXT.md as a mid-term layer is recommended even on OpenClaw.
+
+**Template:** See `implementations/arkclaw/README.md` Section 2 for SESSION-CONTEXT.md standard structure and update protocol.
+
+---
+
+## 9. IDENTITY.md Behavioral Rules — Confirmed Across Two Platforms
+
+**Finding confirmed independently on:**
+- OpenClaw (FClaw team) — March 2026
+- ArkClaw (Apple HR Team) — March 2026
+
+**What was found:** On both platforms, placing behavioral Hard Rules in IDENTITY.md produces more reliable enforcement than placing them in SOUL.md or AGENTS.md alone.
+
+**Test evidence (ArkClaw):**
+- Before IDENTITY.md rules: Apple sent an offer directly when asked, bypassing the founder approval step
+- After IDENTITY.md rules: Apple correctly responded "I'll prepare a draft for your review before sending"
+
+**Spec recommendation:** The IDENTITY.md standard template should include a mandatory "Behavioral Rules" section with ✅/❌ examples showing correct and incorrect agent behavior. This section should be treated as higher priority than SOUL.md for behavioral enforcement.
+
+This finding is now documented in both the OpenClaw and ArkClaw implementation notes and has been proposed as a MAWA spec addition.
+
+---
+
 ## Version History
 
 | Version | Date | Notes |
 |---------|------|-------|
 | 1.0 | 2026-03-25 | Initial documentation from v0.1.0 validation testing |
+| 1.1 | 2026-03-28 | Add sections 8–9: three-layer memory architecture, IDENTITY.md behavioral rules cross-platform confirmation |
