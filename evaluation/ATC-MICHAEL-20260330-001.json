@@ -1,0 +1,25 @@
+{
+  "taskrun_id": "ATC-MICHAEL-20260330-001",
+  "evaluation_score": 84,
+  "dimension_scores": {
+    "process_adherence": 22,
+    "output_quality": 20,
+    "playbook_application": 22,
+    "delivery_correctness": 20
+  },
+  "playbook_candidates": [
+    {
+      "candidate_id": "CAND-MICHAEL-20260330-001",
+      "source_taskrun": "ATC-MICHAEL-20260330-001",
+      "pattern_type": "gap_pattern",
+      "trigger_condition": "B-layer asset evaluation where traceability_score and completeness_score diverge by more than 20 points",
+      "recommended_action": "Flag the traceability gap in improvement recommendations, require upstream process owner review",
+      "suggested_bullet_text": "Q-006: When evaluating B-layer assets, if traceability_score and completeness_score diverge by more than 20 points, include 'traceability needs strengthening' in improvement recommendations and request upstream process owner attribution.",
+      "confidence": "high",
+      "times_seen_this_week": 3
+    }
+  ],
+  "expert_flag": false,
+  "feedback": "R-005 applied correctly — document below threshold, immediate FAIL without retry. Delivery correct to both submitter and FClaw. Minor gap: Q-006 pattern present (traceability vs completeness divergence >20pts) but bullet not triggered. Candidate generated for Reflector.",
+  "evaluated_at": "2026-03-30T09:16:05+08:00"
+}

@@ -1,0 +1,68 @@
+{
+  "taskrun_id": "ATC-MICHAEL-20260330-001",
+  "atc_id": "ATC-MICHAEL-ASSET-EVALUATE",
+  "position_id": "michael-asset-analyst",
+  "agent_id": "michael",
+  "triggered_by": "zhang_wei",
+  "started_at": "2026-03-30T09:15:00+08:00",
+  "completed_at": "2026-03-30T09:15:42+08:00",
+  "duration_ms": 42000,
+  "token_estimate": 1240,
+
+  "input": {
+    "asset_id": "B20260330-001",
+    "asset_name": "Precision CNC Spindle Assembly Line",
+    "submitted_by": "zhang_wei",
+    "document_content": "This is a test asset for evaluation purposes.",
+    "document_length_chars": 46,
+    "layer": "B",
+    "completeness_score": 85,
+    "traceability_score": 54
+  },
+
+  "output": {
+    "quality_gate": "FAIL",
+    "red_line": "R-005",
+    "red_line_reason": "Document content below 50 character threshold",
+    "feedback": "Asset document content is insufficient for evaluation. Please resubmit with full technical specification.",
+    "recommendation": null
+  },
+
+  "tools_used": ["feishu_read", "file_write", "notify"],
+  "retry_count": 0,
+
+  "playbook_bullets_hit": ["R-005"],
+  "playbook_bullets_missed": ["Q-006"],
+
+  "quality_gate": "FAIL",
+  "preflight": "PASS",
+  "ipcp_sent": true,
+  "ipcp_type": "Error-Report",
+
+  "red_line_triggered": true,
+  "red_line_code": "R-005",
+
+  "delivery": {
+    "targets": ["submitter_dm", "fclaw"],
+    "status": "DELIVERED",
+    "dual_path": true
+  },
+
+  "evaluation": {
+    "score": 84,
+    "dimensions": {
+      "process_adherence": 22,
+      "output_quality": 20,
+      "playbook_application": 22,
+      "delivery_correctness": 20
+    },
+    "feedback": "R-005 applied correctly — document below threshold, immediate FAIL without retry. Delivery correct to both submitter and FClaw. Minor gap: Q-006 pattern present (traceability vs completeness divergence >20pts) but bullet not triggered. Candidate generated for Reflector.",
+    "expert_flag": false,
+    "expert_reviewed": false,
+    "expert_feedback": null,
+    "evaluated_at": "2026-03-30T09:16:05+08:00",
+    "expert_reviewed_at": null
+  },
+
+  "timestamp": "2026-03-30T09:15:42+08:00"
+}

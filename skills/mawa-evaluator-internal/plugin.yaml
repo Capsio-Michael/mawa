@@ -1,0 +1,45 @@
+plugin_id: mawa-evaluator
+plugin_type: post-execution
+version: 1.0.0
+trigger: after_taskrun_write
+author: Capsio / MAWA
+license: MIT
+
+input:
+  - name: taskrun_path
+    type: string
+    required: true
+  - name: atc_path
+    type: string
+    required: true
+  - name: registration_path
+    type: string
+    required: true
+  - name: playbook_path
+    type: string
+    required: true
+
+output:
+  - name: evaluation_score
+    type: integer
+    range: 0-100
+  - name: dimension_scores
+    type: object
+  - name: playbook_candidates
+    type: array
+  - name: expert_flag
+    type: boolean
+  - name: feedback
+    type: string
+  - name: evaluated_at
+    type: string
+    format: ISO8601
+
+thresholds:
+  expert_flag_below: 70
+  pattern_flag_count: 3
+
+output_paths:
+  evaluations: evaluation/{taskrun_id}.json
+  visualizations: evaluation/viz/{taskrun_id}.txt
+  candidates: playbook-candidates/{candidate_id}.json

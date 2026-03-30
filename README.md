@@ -197,6 +197,33 @@ See [ROADMAP-v0.2.0.md](docs/ROADMAP-v0.2.0.md) for the full plan.
 
 ---
 
+## v0.2.0 — The Y-Axis (in progress)
+
+v0.1.0 governs what agents do. v0.2.0 adds evaluation of how well they
+do it — and a structured path for that quality to improve over time.
+
+### New in v0.2.0
+
+| Component | Status |
+|---|---|
+| `mawa-evaluator-internal` skill | 🔨 In progress |
+| TaskRun schema update (evaluation field) | 🔨 In progress |
+| Per-TaskRun visualization | Planned 4/1 |
+| Registration runtime enforcement | Planned 3/31 |
+| Benchmark — MAWA vs baseline | Planned 4/2 |
+
+### The improvement loop
+
+```
+Execute (ATC) → Record (TaskRun) → Evaluate (Internal) →
+Flag (Expert) → Reflect → Curate → Evolve (Playbook) →
+Execute better next time
+```
+
+See [roadmap-v0.2.0.md](docs/ROADMAP-v0.2.0.md) for full detail.
+
+---
+
 ## Roadmap
 
 - [ ] `mawa-validate` CLI tool

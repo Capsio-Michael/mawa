@@ -1,0 +1,17 @@
+ATC-MICHAEL-ASSET-EVALUATE | 2026-03-30 09:15
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Input:    Asset "B20260330-001" | submitted by Zhang Wei
+Result:   FAIL ❌ | Score: 0/100
+Red Line: R-005 — document content below 50 character threshold
+
+Process:  ████████████████████ 42s | 0 retries
+Playbook: R-005 triggered ✅ | Q-006 not triggered ⚠️
+
+IPCP:     Error-Report → FClaw ✅
+Delivery: Submitter DM ✅ | FClaw ✅
+
+Internal Eval:  84/100
+Expert Eval:    Not required (score ≥ 70)
+
+Candidate:      CAND-MICHAEL-20260330-001 → Q-006 gap pattern (×3 this week)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
