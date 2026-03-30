@@ -1,0 +1,69 @@
+---
+position_id: STOCKY
+agent_type: WA
+managed_by: FCLAW
+enforcement_version: 1
+effective_date: 2026-03-31
+
+tool_allowlist:
+  - web_search
+  - feishu_im_notify
+  - file_write
+  - cron_execution
+
+tool_denylist:
+  - finance_api
+  - hr_api
+  - code_exec
+  - registration_write
+  - playbook_write
+  - atc_dispatch
+  - feishu_doc_write
+  - feishu_doc_delete
+  - feishu_chat_read
+  - registry_write
+
+data_path_sandbox:
+  read:
+    - workspace/agents/stocky/
+    - workspace/shared/watchlist/
+  write:
+    - workspace/agents/stocky/taskruns/
+  deny:
+    - workspace/agents/booky/
+    - workspace/agents/michael/
+    - workspace/agents/pepper/
+    - finance/
+    - hr/
+    - ABC_Asset_Registry/
+    - SESSION_CONTEXT/
+
+cross_agent_acl:
+  can_receive_from:
+    - FCLAW
+  can_send_to:
+    - FCLAW
+  deny_send_to:
+    - BOOKY
+    - MICHAEL
+    - PEPPER
+
+ipcp_allowlist:
+  inbound:
+    - Request-ATC
+    - Request-Data
+  outbound:
+    - Notify-Status
+    - Error-Report
+
+hard_rules_enforcement:
+  rule_1: never_broadcast_unverified_data
+  rule_2: anomaly_alerts_must_never_be_suppressed
+  rule_3: data_source_discrepancy_flag_not_choose
+
+enforcement_actions:
+  tool_deny: log_and_block
+  data_deny: log_and_block
+  acl_deny: log_and_escalate_to_fclaw
+  ipcp_deny: log_and_block
+  hard_rule_violation: log_and_escalate_to_fclaw

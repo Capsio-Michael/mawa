@@ -1,0 +1,64 @@
+---
+position_id: BOOKY
+agent_type: WA
+managed_by: FCLAW
+enforcement_version: 1
+effective_date: 2026-03-31
+
+tool_allowlist:
+  - feishu_chat_read
+  - feishu_doc_write
+  - feishu_im_notify
+  - file_write
+  - cron_execution
+
+tool_denylist:
+  - finance_api
+  - hr_api
+  - code_exec
+  - registration_write
+  - playbook_write
+  - atc_dispatch
+  - web_search
+  - feishu_doc_delete
+
+data_path_sandbox:
+  read:
+    - workspace/agents/booky/
+    - workspace/shared/
+  write:
+    - workspace/agents/booky/memory/
+    - workspace/agents/booky/taskruns/
+  deny:
+    - workspace/agents/michael/
+    - workspace/agents/pepper/
+    - workspace/agents/stocky/
+    - finance/
+    - hr/
+
+cross_agent_acl:
+  can_receive_from:
+    - FCLAW
+    - PEPPER
+    - MICHAEL
+  can_send_to:
+    - FCLAW
+    - PEPPER
+    - MICHAEL
+  deny_send_to:
+    - STOCKY
+
+ipcp_allowlist:
+  inbound:
+    - Request-ATC
+    - Notify-Status
+    - Request-Data
+  outbound:
+    - Notify-Status
+    - Error-Report
+
+enforcement_actions:
+  tool_deny: log_and_block
+  data_deny: log_and_block
+  acl_deny: log_and_escalate_to_fclaw
+  ipcp_deny: log_and_block

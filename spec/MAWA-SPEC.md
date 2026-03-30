@@ -349,9 +349,50 @@ MAWA is platform-agnostic. It can be implemented on:
 
 ---
 
+---
+
+## §6 Registration Runtime Enforcement (v0.2.0)
+
+Every MAWA Position has two companion files:
+1. `REGISTRATION.md` — human-readable capability and boundary declaration
+2. `{POSITION_ID}_ENFORCEMENT.yaml` — machine-executable enforcement config
+
+### Enforcement hierarchy
+
+```
+REGISTRATION.md (source of truth, human-readable)
+    ↓ FClaw syncs on every REGISTRATION update
+{POSITION_ID}_ENFORCEMENT.yaml (runtime enforcement)
+    ↓ checked before every tool call, IPCP, and data access
+audit/deny-log/{date}.jsonl (immutable deny record)
+```
+
+### Enforcement is code-level
+
+In v0.1.0, enforcement was prompt-level: FClaw instructed WAs to
+respect boundaries, and WAs complied based on their IDENTITY.md.
+
+In v0.2.0, enforcement is code-level: the runtime checks the
+ENFORCEMENT.yaml allowlists before executing any tool call or
+routing any IPCP. The WA's model compliance is no longer required
+for boundary safety — the runtime enforces it regardless.
+
+### FClaw enforcement authority
+
+FClaw is the only entity that can:
+- Modify any WA REGISTRATION.md
+- Update any WA ENFORCEMENT.yaml
+- Grant temporary tool exceptions (with owner approval)
+
+All REGISTRATION changes require Michael (李仲涛) approval before
+FClaw executes the update.
+
+---
+
 ## Version History
 
 | Version | Date | Notes |
 |---------|------|-------|
 | 1.0 | 2026-03-23 | Initial public release |
 | 1.1 | 2026-03-28 | Added WA Bootstrap Protocol, File Structure section |
+| 1.2 | 2026-03-31 | Added §6 Registration Runtime Enforcement |

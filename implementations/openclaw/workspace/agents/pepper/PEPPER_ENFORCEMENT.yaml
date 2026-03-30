@@ -1,0 +1,73 @@
+---
+position_id: PEPPER
+agent_type: WA
+managed_by: FCLAW
+enforcement_version: 1
+effective_date: 2026-03-31
+
+tool_allowlist:
+  - feishu_im_notify
+  - feishu_chat_read
+  - file_read
+  - file_write
+  - cron_execution
+
+tool_denylist:
+  - finance_api
+  - hr_api
+  - code_exec
+  - registration_write
+  - playbook_write
+  - atc_dispatch
+  - web_search
+  - feishu_doc_write
+  - feishu_doc_delete
+  - registry_write
+
+data_path_sandbox:
+  read:
+    - workspace/agents/pepper/
+    - workspace/shared/
+    - workspace/agents/pepper/memory/
+  write:
+    - workspace/agents/pepper/memory/
+    - workspace/agents/pepper/taskruns/
+  deny:
+    - workspace/agents/michael/
+    - workspace/agents/booky/
+    - workspace/agents/stocky/
+    - finance/
+    - hr/
+    - ABC_Asset_Registry/
+
+cross_agent_acl:
+  can_receive_from:
+    - FCLAW
+    - BOOKY
+    - MICHAEL
+  can_send_to:
+    - FCLAW
+  deny_send_to:
+    - STOCKY
+    - BOOKY
+    - MICHAEL
+
+ipcp_allowlist:
+  inbound:
+    - Request-ATC
+    - Notify-Status
+  outbound:
+    - Notify-Status
+    - Error-Report
+
+hard_rules_enforcement:
+  rule_1: personal_data_never_shared_without_explicit_instruction
+  rule_5: personal_reminders_private_message_only
+  rule_6: memory_files_append_only
+
+enforcement_actions:
+  tool_deny: log_and_block
+  data_deny: log_and_block
+  acl_deny: log_and_escalate_to_fclaw
+  ipcp_deny: log_and_block
+  hard_rule_violation: log_and_escalate_to_owner

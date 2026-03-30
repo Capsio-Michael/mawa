@@ -1,0 +1,79 @@
+---
+position_id: MICHAEL
+agent_type: WA
+managed_by: FCLAW
+enforcement_version: 1
+effective_date: 2026-03-31
+
+tool_allowlist:
+  - feishu_chat_monitor
+  - feishu_im_reply
+  - feishu_doc_read
+  - feishu_doc_write
+  - feishu_im_notify
+  - file_write
+  - registry_write
+
+tool_denylist:
+  - finance_api
+  - hr_api
+  - code_exec
+  - registration_write
+  - playbook_write
+  - atc_dispatch
+  - feishu_doc_delete
+  - registry_delete
+
+data_path_sandbox:
+  read:
+    - workspace/agents/michael/
+    - workspace/shared/
+    - feishu://Technology.Claw/*
+  write:
+    - workspace/agents/michael/taskruns/
+    - workspace/agents/michael/registry/
+    - feishu://Quality_Reports/*
+  deny:
+    - workspace/agents/booky/
+    - workspace/agents/pepper/
+    - workspace/agents/stocky/
+    - finance/
+    - hr/
+    - sourcing/
+
+cross_agent_acl:
+  can_receive_from:
+    - FCLAW
+    - BOOKY
+    - PEPPER
+  can_send_to:
+    - FCLAW
+    - BOOKY
+    - PEPPER
+  deny_send_to:
+    - STOCKY
+
+ipcp_allowlist:
+  inbound:
+    - Request-ATC
+    - Notify-Status
+    - Request-Data
+  outbound:
+    - Notify-Status
+    - Error-Report
+    - Request-Data
+
+hard_rules_enforcement:
+  rule_1: registry_score_immutable_after_write
+  rule_2: red_line_always_triggers_rejection
+  rule_5: score_must_be_integer_0_to_100
+  rule_6: a_layer_without_6digit_code_auto_fail
+  rule_7: b_layer_without_8digit_code_auto_fail
+  rule_8: c_layer_without_8digit_code_auto_fail
+
+enforcement_actions:
+  tool_deny: log_and_block
+  data_deny: log_and_block
+  acl_deny: log_and_escalate_to_fclaw
+  ipcp_deny: log_and_block
+  hard_rule_violation: log_and_escalate_to_owner

@@ -1,0 +1,65 @@
+---
+position_id: FCLAW
+agent_type: MA
+enforcement_version: 1
+effective_date: 2026-03-31
+
+tool_allowlist:
+  - feishu_chat_read
+  - feishu_im_notify
+  - feishu_doc_read
+  - file_read
+  - file_write
+  - cron_management
+  - taskrun_read
+  - playbook_read
+  - playbook_write
+  - registration_read
+  - registration_write
+  - atc_dispatch
+
+tool_denylist:
+  - finance_api
+  - hr_api
+  - code_exec
+  - external_api_call
+  - database_write
+
+data_path_sandbox:
+  read:
+    - workspace/
+    - implementations/openclaw/
+  write:
+    - workspace/agents/*/
+    - workspace/shared/
+  deny:
+    - finance/
+    - hr/
+    - external/
+
+cross_agent_acl:
+  can_receive_from:
+    - BOOKY
+    - MICHAEL
+    - PEPPER
+    - STOCKY
+  can_send_to:
+    - BOOKY
+    - MICHAEL
+    - PEPPER
+    - STOCKY
+  deny_all_others: true
+
+ipcp_allowlist:
+  inbound:
+    - Notify-Status
+    - Error-Report
+  outbound:
+    - Request-ATC
+    - Notify-Status
+
+enforcement_actions:
+  tool_deny: log_and_block
+  data_deny: log_and_block
+  acl_deny: log_and_escalate_to_owner
+  ipcp_deny: log_and_block

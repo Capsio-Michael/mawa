@@ -1,0 +1,1 @@
+{"deny_id":"DENY-BOOKY-20260331-001","position_id":"BOOKY","taskrun_id":"ATC-BOOKY-20260331-001","violation_type":"acl_deny","attempted_action":"IPCP Notify-Status to STOCKY","blocked_value":"STOCKY","enforcement_rule":"deny_send_to: STOCKY","action_taken":"log_and_block","timestamp":"2026-03-31T09:00:00+08:00"}
